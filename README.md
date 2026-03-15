@@ -74,15 +74,14 @@ Cross-entropy with class weighting to compensate for the heavy imbalance between
 
 The project is organized as a sequence of notebooks, each covering one stage of the pipeline.
 
-01 dataset_loading.ipynb
-02 sentence_processing.ipynb
-03 label_generation.ipynb
-04 tokenization_and_alignment.ipynb
-05 dataset_and_dataloaders.ipynb
-06 model_architecture.ipynb
-07 training.ipynb
-08 evaluation.ipynb
-
+1. 01_dataset_loading.ipynb  
+2. 02_sentence_processing.ipynb  
+3. 03_label_generation.ipynb  
+4. 04_tokenization_and_alignment.ipynb  
+5. 05_dataset_and_dataloaders.ipynb  
+6. 06_model_architecture.ipynb  
+7. 07_training.ipynb  
+8. 08_evaluation.ipynb  
 
 The goal was to keep each stage easy to inspect and modify.
 
