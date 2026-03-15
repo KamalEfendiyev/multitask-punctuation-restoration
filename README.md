@@ -30,9 +30,9 @@ Both tasks are learned together using a shared encoder and separate classificati
 Architecture:
 
 
-BERT encoder
-├── punctuation classifier
-└── capitalization classifier
+            BERT encoder
+           /            \
+ punctuation head   capitalization headr
 
 
 Training both tasks jointly tends to improve stability and allows the model to use shared linguistic signals.
@@ -136,18 +136,14 @@ pip install -r requirements.txt
 
 Execute the notebooks in order:
 
-
-01_dataset_loading.ipynb
-02_sentence_processing.ipynb
-03_label_generation.ipynb
-04_tokenization_and_alignment.ipynb
-05_dataset_and_dataloaders.ipynb
-06_model_architecture.ipynb
-07_training.ipynb
-08_evaluation.ipynb
-
-
-Each notebook corresponds to a stage in the data preparation or training pipeline.
+1. 01_dataset_loading.ipynb  
+2. 02_sentence_processing.ipynb  
+3. 03_label_generation.ipynb  
+4. 04_tokenization_and_alignment.ipynb  
+5. 05_dataset_and_dataloaders.ipynb  
+6. 06_model_architecture.ipynb  
+7. 07_training.ipynb  
+8. 08_evaluation.ipynb  
 
 ---
 
@@ -181,6 +177,48 @@ The project uses:
 - Scikit-learn
 
 ---
+
+## Results
+
+The model is evaluated separately on punctuation prediction and capitalization prediction.
+
+### Punctuation Restoration
+
+| Class | Precision | Recall | F1 |
+|------|-----------|--------|----|
+| O (no punctuation) | 0.98 | 0.98 | 0.98 |
+| Comma | 0.78 | 0.73 | 0.75 |
+| Period | 0.96 | 0.98 | 0.97 |
+| Question mark | 0.72 | 0.41 | 0.52 |
+
+Macro F1: **0.81**
+
+---
+
+### Capitalization Restoration
+
+| Class | Precision | Recall | F1 |
+|------|-----------|--------|----|
+| Lowercase | 0.98 | 0.99 | 0.99 |
+| Capitalized | 0.95 | 0.93 | 0.94 |
+| Uppercase | 0.85 | 0.87 | 0.86 |
+
+Macro F1: **0.93**
+
+---
+
+### Observations
+
+The model performs well at identifying sentence boundaries and capitalization patterns.  
+The main source of error comes from comma prediction, which typically requires longer contextual information than sentence-ending punctuation.
+
+
+## Project Summary
+
+This repository implements a Transformer-based system for restoring punctuation and capitalization in English text.  
+The model is trained on Wikipedia and uses a multi-task learning setup where both tasks are learned jointly.  
+
+The implementation focuses on clarity and reproducibility: the entire pipeline — from dataset preparation to evaluation — is organized as a sequence of notebooks that document each step of the process.
 
 # Notes
 
