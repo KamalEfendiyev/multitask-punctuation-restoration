@@ -29,10 +29,7 @@ Both tasks are learned together using a shared encoder and separate classificati
 
 Architecture:
 
-
-            BERT encoder
-           /            \
- punctuation head   capitalization headr
+BERT encoder ├── punctuation classifier └── capitalization classifier
 
 
 Training both tasks jointly tends to improve stability and allows the model to use shared linguistic signals.
